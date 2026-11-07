@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Research method and taxonomy for the Semantic Layer Atlas.">
+  <title>Method — Semantic Layer Atlas</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body data-page="method">
+  <a class="skip-link" href="#method">Skip to method</a>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="Semantic Layer Atlas home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>Semantic Layer <b>Atlas</b></span></a>
+    <nav aria-label="Primary navigation"><a href="/">Directory</a><a class="active" href="/about.html">Method</a><span class="nav-future">Blueprint <small>next</small></span></nav>
+    <a class="header-back" href="/">← Explore directory</a>
+  </header>
+  <main id="method">
+    <section class="method-hero wrap">
+      <p class="kicker"><span></span> Research method</p>
+      <h1>Compare architecture.<br><em>Then</em> compare products.</h1>
+      <p>“Semantic layer” now describes several different control points. The Atlas keeps them in one directory while making the differences explicit.</p>
+    </section>
+    <section class="taxonomy wrap">
+      <div class="taxonomy-intro"><span class="section-number">M—01</span><div><p class="eyebrow">The taxonomy</p><h2>Six patterns,<br>six jobs.</h2></div><p>A product may span more than one pattern. Its primary category reflects the architectural job it performs best—not its marketing label.</p></div>
+      <div class="taxonomy-grid">
+        <article><span>01</span><h3>Standard</h3><p>Portable metadata contracts. They describe meaning but do not necessarily execute queries.</p><b>Example · Apache Ossie</b></article>
+        <article><span>02</span><h3>Semantic layer</h3><p>Independent query runtimes serving multiple consumers through APIs or standard protocols.</p><b>Examples · Cube, dbt, AtScale</b></article>
+        <article><span>03</span><h3>Warehouse-native</h3><p>Semantic objects governed and executed inside the data platform.</p><b>Examples · Snowflake, Databricks</b></article>
+        <article><span>04</span><h3>BI-native</h3><p>Rich models optimized for a primary analytics experience.</p><b>Examples · LookML, Power BI, Omni</b></article>
+        <article><span>05</span><h3>AI analytics</h3><p>Conversational consumers grounded by curated models and business context.</p><b>Examples · Genie, Spotter</b></article>
+        <article><span>06</span><h3>Open-source BI</h3><p>BI frontends with local semantics or adapters to external semantic runtimes.</p><b>Examples · Superset, Metabase</b></article>
+      </div>
+    </section>
+    <section class="method-detail">
+      <div class="wrap method-columns">
+        <div><p class="eyebrow light">What each profile covers</p><h2>Evidence, fit, and friction.</h2></div>
+        <div class="method-list">
+          <article><b>01</b><div><h3>Identity & market age</h3><p>What the product actually is, who owns it, deployment shape, license posture, maturity, and an approximate time in market.</p></div></article>
+          <article><b>02</b><div><h3>Semantic scope</h3><p>Metrics, measures, dimensions, entities, joins, hierarchies, security, time semantics, AI context, and other supported objects.</p></div></article>
+          <article><b>03</b><div><h3>Operating model</h3><p>How teams author, validate, deploy, query, govern, and consume the model.</p></div></article>
+          <article><b>04</b><div><h3>Pros, cons & best fit</h3><p>Editorial synthesis of trade-offs. These are design signals, not vendor rankings.</p></div></article>
+          <article><b>05</b><div><h3>Primary sources</h3><p>Official documentation, project sites, and first-party release history. Vendor claims are identified as such through source context.</p></div></article>
+        </div>
+      </div>
+    </section>
+    <section class="scoring wrap">
+      <span class="section-number">M—03</span>
+      <div><p class="eyebrow">Editorial scoring</p><h2>A compass,<br>not a leaderboard.</h2></div>
+      <div class="score-defs">
+        <p><b>Expressiveness</b><span>Depth of model, calculations, relationships, and dimensional behavior.</span></p>
+        <p><b>Interoperability</b><span>Breadth of consumers, protocols, export paths, and model portability.</span></p>
+        <p><b>Governance</b><span>Access control, lifecycle, versioning, auditability, and controlled reuse.</span></p>
+        <p><b>AI readiness</b><span>Agent context, governed query paths, natural-language consumption, and evaluation.</span></p>
+        <p><b>Openness</b><span>Open source, open specifications, accessible APIs, and avoidance of proprietary boundaries.</span></p>
+      </div>
+      <p class="method-warning">Scores compress nuance. A lower score can be a better architectural fit: a thin open-source BI layer may be exactly right when a dedicated runtime already owns semantics.</p>
+    </section>
+    <section class="source-note wrap"><div><p class="eyebrow">Research date</p><h2 data-reviewed></h2></div><p data-methodology></p><a class="button primary" href="/">Browse the directory <span>→</span></a></section>
+  </main>
+  <footer class="site-footer"><div class="wrap footer-inner"><div><span class="brand-mark small" aria-hidden="true"><i></i><i></i><i></i></span><b>Semantic Layer Atlas</b></div><p>Independent research interface. Product capabilities change; verify current documentation.</p><span data-reviewed></span></div></footer>
+  <script src="/data.js"></script><script src="/app.js"></script>
+</body>
+</html>

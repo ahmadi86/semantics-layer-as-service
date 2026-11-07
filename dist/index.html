@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="A source-backed directory of semantic layer technologies, modeling languages, standards, and AI analytics systems.">
+  <title>Semantic Layer Atlas — Technology Directory</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body data-page="directory">
+  <a class="skip-link" href="#directory">Skip to directory</a>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="Semantic Layer Atlas home">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span>Semantic Layer <b>Atlas</b></span>
+    </a>
+    <nav aria-label="Primary navigation">
+      <a class="active" href="/">Directory</a>
+      <a href="/about.html">Method</a>
+      <span class="nav-future" title="Planned next stage">Blueprint <small>next</small></span>
+    </nav>
+    <button class="shortlist-trigger" type="button" data-open-shortlist>
+      Shortlist <span data-shortlist-count>0</span>
+    </button>
+  </header>
+
+  <main>
+    <section class="hero wrap">
+      <div class="hero-copy">
+        <p class="kicker"><span></span> Research edition · 2026</p>
+        <h1>Design the layer<br>that gives data <em>meaning.</em></h1>
+        <p class="hero-intro">A practical, source-backed directory for choosing the semantic foundation behind BI, embedded analytics, governed metrics, and AI agents.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#directory">Explore 17 technologies <span>↓</span></a>
+          <a class="text-link" href="/about.html">How the atlas is structured <span>↗</span></a>
+        </div>
+        <dl class="hero-stats" aria-label="Directory summary">
+          <div><dt>17</dt><dd>deep profiles</dd></div>
+          <div><dt>6</dt><dd>architecture patterns</dd></div>
+          <div><dt>50+</dt><dd>official sources</dd></div>
+        </dl>
+      </div>
+
+      <div class="system-map" aria-label="Semantic layer architecture diagram">
+        <div class="map-caption"><span>Reference architecture</span><b>SLaaS / 01</b></div>
+        <div class="map-stage source-stage">
+          <p>01 · Data plane</p>
+          <div class="map-nodes"><span>Warehouse</span><span>Lakehouse</span><span>Streams</span></div>
+        </div>
+        <div class="map-flow"><i></i><i></i><i></i></div>
+        <div class="map-core">
+          <div class="core-orbit"><i></i><i></i><i></i><i></i></div>
+          <div><small>02 · CONTRACT</small><strong>Semantic<br>Layer</strong><span>metrics · entities · policy</span></div>
+        </div>
+        <div class="map-flow down"><i></i><i></i><i></i></div>
+        <div class="map-stage consumer-stage">
+          <p>03 · Experience plane</p>
+          <div class="map-nodes"><span>BI</span><span>Apps</span><span>Agents</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="thesis-band" aria-label="Directory thesis">
+      <div class="wrap thesis-inner">
+        <span class="section-number">A—01</span>
+        <p><strong>Not every “semantic layer” is the same thing.</strong> This atlas separates interchange standards, query engines, warehouse-native models, BI-native models, and conversational consumers—so the comparison starts with architecture, not slogans.</p>
+      </div>
+    </section>
+
+    <section class="directory-section wrap" id="directory">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Technology directory</p>
+          <h2>Find your control point.</h2>
+        </div>
+        <p>Search by capability, domain, or product. Add up to three candidates to a shortlist for a side-by-side comparison.</p>
+      </div>
+
+      <div class="directory-tools" role="search">
+        <label class="search-field">
+          <span class="sr-only">Search technologies</span>
+          <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m16 16 5 5"></path></svg>
+          <input type="search" id="search" placeholder="Search metrics, dimensions, AI, dbt…" autocomplete="off">
+          <kbd>/</kbd>
+        </label>
+        <label class="sort-field">Sort
+          <select id="sort">
+            <option value="featured">Curated</option>
+            <option value="name">Name A–Z</option>
+            <option value="maturity">Maturity</option>
+            <option value="openness">Openness score</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="filter-row" id="filters" aria-label="Filter by architecture"></div>
+      <div class="results-line" aria-live="polite"><span id="resultCount">17 technologies</span><button id="clearFilters" type="button" hidden>Clear filters</button></div>
+      <div class="card-grid" id="cardGrid"></div>
+      <div class="empty-state" id="emptyState" hidden>
+        <span>∅</span><h3>No exact match.</h3><p>Try a category such as “warehouse-native,” or search for a capability like “MCP” or “hierarchies.”</p>
+      </div>
+    </section>
+
+    <section class="decision-section">
+      <div class="wrap decision-grid">
+        <div class="decision-intro">
+          <p class="eyebrow light">A selection lens</p>
+          <h2>Five questions before the vendor list.</h2>
+          <p>The right layer depends less on feature count than on where meaning should be governed and how many consumers must share it.</p>
+          <a href="/about.html" class="button inverse">Read the methodology <span>↗</span></a>
+        </div>
+        <ol class="decision-list">
+          <li><span>01</span><div><b>Where is the source of truth?</b><p>Warehouse, transformation project, standalone service, or BI platform?</p></div></li>
+          <li><span>02</span><div><b>Who must consume it?</b><p>One BI tool, many tools, embedded apps, spreadsheets, or autonomous agents?</p></div></li>
+          <li><span>03</span><div><b>How deep is the model?</b><p>Simple KPIs, or hierarchies, semi-additivity, role-playing dimensions, and many-to-many?</p></div></li>
+          <li><span>04</span><div><b>Where does policy execute?</b><p>At the warehouse, semantic runtime, application, or all three?</p></div></li>
+          <li><span>05</span><div><b>What must remain portable?</b><p>Definitions, query semantics, security, AI context, or the entire runtime?</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="next-stage wrap">
+      <span class="section-number">A—03</span>
+      <div>
+        <p class="eyebrow">Roadmap</p>
+        <h2>Directory first.<br>Blueprint studio next.</h2>
+      </div>
+      <p>This first stage maps the available building blocks. The next stage can turn the shortlist into a SLaaS blueprint: authoring workflow, query API, policy boundary, caching strategy, metadata contract, and operating model.</p>
+      <div class="roadmap-steps" aria-label="Product roadmap">
+        <span class="done"><i>✓</i> Directory</span><b></b><span><i>02</i> Blueprint</span><b></b><span><i>03</i> Runtime</span>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div><span class="brand-mark small" aria-hidden="true"><i></i><i></i><i></i></span><b>Semantic Layer Atlas</b></div>
+      <p>Independent research interface. Product capabilities change; verify against current vendor documentation and your own proof of concept.</p>
+      <span data-reviewed></span>
+    </div>
+  </footer>
+
+  <aside class="shortlist-panel" id="shortlistPanel" aria-hidden="true" aria-label="Technology shortlist">
+    <div class="panel-head"><div><small>Decision workspace</small><h2>Your shortlist</h2></div><button type="button" data-close-shortlist aria-label="Close shortlist">×</button></div>
+    <div id="shortlistItems" class="shortlist-items"></div>
+    <div class="panel-actions"><button class="button primary wide" id="compareButton" type="button">Compare selected</button><button class="clear-button" id="clearShortlist" type="button">Clear all</button></div>
+  </aside>
+  <div class="scrim" id="scrim" hidden></div>
+  <dialog class="compare-dialog" id="compareDialog">
+    <div class="compare-head"><div><small>Side-by-side</small><h2>Shortlist comparison</h2></div><button type="button" data-close-compare aria-label="Close comparison">×</button></div>
+    <div class="compare-scroll" id="compareContent"></div>
+  </dialog>
+
+  <script src="/data.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>

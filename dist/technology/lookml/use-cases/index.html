@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="A searchable catalog of 68 semantic-layer situations with business examples, rules, LookML patterns, and implementation caveats.">
+  <title>68 LookML Use Cases — Semantic Layer Atlas</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body data-page="lookml-use-cases">
+  <a class="skip-link" href="#patternMain">Skip to patterns</a>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="Semantic Layer Atlas home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>Semantic Layer <b>Atlas</b></span></a>
+    <nav aria-label="Primary navigation"><a href="/">Directory</a><a class="active" href="/technology/lookml/">LookML</a><a href="/about.html">Method</a></nav>
+    <a class="header-back" href="/technology/lookml/">← LookML profile</a>
+  </header>
+
+  <main id="patternMain">
+    <section class="pattern-hero">
+      <div class="wrap pattern-hero-grid">
+        <div>
+          <div class="breadcrumb"><a href="/">Directory</a><span>→</span><a href="/technology/lookml/">LookML</a><span>→</span>Use cases</div>
+          <p class="kicker"><span></span>Implementation field guide</p>
+          <h1>68 semantic situations.<br><em>Exact LookML patterns.</em></h1>
+          <p class="pattern-deck">Business examples, semantic rules, implementation templates, and the caveats that determine whether the result stays correct when users change grain.</p>
+        </div>
+        <div class="pattern-tally" aria-label="Catalog summary">
+          <strong>68</strong><span>situations</span>
+          <div><b>7</b><small>categories</small></div><div><b>1</b><small>modeled language</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pattern-thesis"><div class="wrap"><span>Core distinction</span><p><b>Wide or long</b> describes how a metric is stored. <b>Additive or non-additive</b> describes how it behaves. A long table may contain revenue, customer counts, prices, and conversion rates—each needs its own aggregation rule.</p></div></section>
+
+    <section class="wrap pattern-catalog">
+      <div class="pattern-intro">
+        <div><p class="eyebrow">Search the catalog</p><h2>From source shape to governed consumption.</h2></div>
+        <p>Templates are intentionally explicit. “Source prep + LookML” means correctness requires a warehouse relation, SQL view, or PDT before LookML can expose the semantic object.</p>
+      </div>
+      <div class="pattern-tools">
+        <label class="pattern-search"><span class="sr-only">Search patterns</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m16.2 16.2 4 4"></path></svg><input id="patternSearch" type="search" placeholder="Search situations, rules, code, caveats…" autocomplete="off"><kbd>/</kbd></label>
+        <button id="expandAll" type="button">Expand all</button>
+      </div>
+      <div class="filter-row pattern-filters" id="patternFilters" aria-label="Filter by category"></div>
+      <div class="pattern-results"><span id="patternCount">68 patterns</span><button id="clearPatternFilters" type="button" hidden>Clear filters</button></div>
+      <div id="patternList" class="pattern-list"></div>
+      <div id="patternEmpty" class="empty-state" hidden><span>∅</span><h3>No matching implementation pattern.</h3><p>Try a business concept, LookML parameter, or category.</p></div>
+    </section>
+
+    <section class="pattern-note"><div class="wrap"><div><p class="eyebrow light">Implementation boundary</p><h2>LookML cannot reconstruct information the source never retained.</h2></div><p>Stored location-level distinct counts cannot produce an exact regional distinct count. Preserve entity identities, use a suitable mergeable sketch, or materialize the correct higher-grain value. The catalog marks these boundaries instead of hiding them behind syntax.</p></div></section>
+  </main>
+
+  <footer class="site-footer"><div class="wrap footer-inner"><div><span class="brand-mark small" aria-hidden="true"><i></i><i></i><i></i></span><b>Semantic Layer Atlas</b></div><p>Illustrative templates. Validate SQL dialect support, grain, joins, security, and query behavior in your own Looker project.</p><span>Reviewed November 2026</span></div></footer>
+  <div id="patternLive" class="sr-only" aria-live="polite"></div>
+  <script src="/lookml-use-cases.js"></script>
+  <script src="/use-cases.js"></script>
+</body>
+</html>

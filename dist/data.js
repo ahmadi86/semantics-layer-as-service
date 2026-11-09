@@ -21,6 +21,7 @@ window.SEMANTIC_TECH = [
     cons: ["Primarily valuable within Looker; portability is limited without conversion work", "Large projects can accumulate abstraction and refinement complexity", "Requires careful fanout and join-cardinality design", "Commercial licensing and platform adoption are part of the decision"],
     interoperability: "SQL-dialect aware and database agnostic at the model level, but LookML itself is proprietary. Apache Ossie and third-party conversion efforts can reduce migration friction, not eliminate it.",
     verdict: "Choose when Looker is the main analytics experience and semantic depth matters more than cross-tool neutrality.",
+    implementationLibrary: { count: 68, label: "LookML use cases", url: "/technology/lookml/use-cases/", description: "Search business situations, semantic rules, exact implementation templates, and caveats." },
     scores: { expressiveness: 5, interoperability: 2, governance: 5, ai: 3, openness: 2 },
     sources: [
       ["Introduction to LookML", "https://docs.cloud.google.com/looker/docs/what-is-lookml"],

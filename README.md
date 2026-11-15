@@ -46,7 +46,6 @@ python -m http.server 8080 --directory dist
 
 ```text
 .
-├── .openai/hosting.json       # Sites deployment configuration
 ├── dist/                      # Complete static website
 │   ├── index.html             # Technology directory
 │   ├── technology/            # Technology profile routes

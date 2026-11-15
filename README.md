@@ -8,6 +8,7 @@ The current site includes:
 - A dedicated profile page for each technology
 - Shortlisting and comparison tools
 - A LookML implementation guide with 68 searchable business situations, semantic rules, code patterns, and caveats
+- An Apache Ossie `0.3.0.dev0` field guide covering the same 68 situations as core examples, source/runtime boundaries, or explicit unsupported cases
 
 ## Run locally with Python
 
@@ -30,6 +31,8 @@ Then open:
 - Directory: [http://localhost:8000/](http://localhost:8000/)
 - LookML profile: [http://localhost:8000/technology/lookml/](http://localhost:8000/technology/lookml/)
 - LookML use-case guide: [http://localhost:8000/technology/lookml/use-cases/](http://localhost:8000/technology/lookml/use-cases/)
+- Apache Ossie profile: [http://localhost:8000/technology/apache-ossie/](http://localhost:8000/technology/apache-ossie/)
+- Apache Ossie use-case guide: [http://localhost:8000/technology/apache-ossie/use-cases/](http://localhost:8000/technology/apache-ossie/use-cases/)
 
 Stop the server with `Ctrl+C`.
 
@@ -48,7 +51,8 @@ python -m http.server 8080 --directory dist
 │   ├── index.html             # Technology directory
 │   ├── technology/            # Technology profile routes
 │   ├── lookml-use-cases.js    # The 68 LookML implementation patterns
-│   ├── use-cases.js           # Use-case search and interaction logic
+│   ├── apache-ossie-use-cases.js # Matching Ossie patterns and support states
+│   ├── use-cases.js           # Shared search, filter, deep-link, and copy behavior
 │   ├── data.js                # Technology directory data
 │   ├── app.js                 # Directory and profile behavior
 │   └── styles.css             # Shared visual system
@@ -58,4 +62,6 @@ python -m http.server 8080 --directory dist
 ## Notes
 
 - The website uses absolute paths such as `/styles.css`, so serve `dist` as the web root instead of opening HTML files directly.
-- LookML and SQL examples are implementation templates. Validate grain, SQL dialect support, joins, access controls, and performance against your own Looker project and warehouse.
+- Apache Ossie examples target the mutable draft `0.3.0.dev0`; verify them against the current official schema and producer/consumer implementations.
+- Unsupported Ossie cases intentionally have no fake YAML or vendor-extension workaround.
+- LookML, Ossie, and SQL examples are implementation templates. Validate grain, dialect support, joins, access controls, and performance in the target platform.

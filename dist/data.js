@@ -51,6 +51,7 @@ window.SEMANTIC_TECH = [
     cons: ["Not a query engine, cache, BI tool, or governance runtime", "Young specification; advanced metric and relationship semantics are still evolving", "Converters may have lossy edges when products expose richer features", "Practical value depends on vendor implementation quality"],
     interoperability: "Interoperability is the product. Current ecosystem pages list converters or commitments across dbt, Snowflake, Holistics, Strategy, Veezoo, GoodData, and others.",
     verdict: "Adopt as an interchange boundary and future-proofing layer; pair it with a real semantic runtime.",
+    implementationLibrary: { count: 68, label: "Apache Ossie use cases", url: "/technology/apache-ossie/use-cases/", description: "See the same 68 semantic situations classified as core, runtime-boundary, or unsupported." },
     scores: { expressiveness: 3, interoperability: 5, governance: 2, ai: 4, openness: 5 },
     sources: [
       ["Apache Ossie home", "https://ossie.apache.org/"],

@@ -1,24 +1,36 @@
 (() => {
-  const patterns = window.LOOKML_USE_CASES || [];
+  const catalog = document.body.dataset.catalog || "lookml";
+  const libraries = { lookml: window.LOOKML_USE_CASES || [], ossie: window.OSSIE_USE_CASES || [] };
+  const patterns = libraries[catalog] || [];
+  const counterpartUrl = document.body.dataset.counterpartUrl || "";
+  const counterpartLabel = document.body.dataset.counterpartLabel || "the companion guide";
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
   const esc = (value = "") => String(value).replace(/[&<>'"]/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[char]);
   const categoryOrder = [...new Set(patterns.map(item => item.category))];
+  const supportOrder = ["core", "boundary", "unsupported"];
+  const supportLabels = { core: "Core Ossie", boundary: "Source / runtime boundary", unsupported: "Not supported" };
   let activeCategory = "All";
+  let activeSupport = "All";
   let expanded = false;
+  let followedHash = false;
 
   const search = $("#patternSearch");
   const list = $("#patternList");
   const filters = $("#patternFilters");
+  const supportFilters = $("#supportFilters");
   const count = $("#patternCount");
   const empty = $("#patternEmpty");
   const clear = $("#clearPatternFilters");
   const expandButton = $("#expandAll");
   const live = $("#patternLive");
 
-  const searchable = item => [item.title, item.category, item.business, item.rule, item.code, item.caveat, item.mode].join(" ").toLowerCase();
+  if (!search || !list || !filters || !count || !empty || !clear || !expandButton || !live) return;
 
-  function renderFilters() {
+  const searchable = item => [item.title, item.category, item.business, item.rule, item.code, item.caveat, item.mode, item.support, item.supportNote].join(" ").toLowerCase();
+  const isFiltered = () => activeCategory !== "All" || activeSupport !== "All" || search.value.trim();
+
+  function renderCategoryFilters() {
     const values = ["All", ...categoryOrder];
     filters.innerHTML = values.map(category => {
       const total = category === "All" ? patterns.length : patterns.filter(item => item.category === category).length;
@@ -26,39 +38,77 @@
     }).join("");
   }
 
-  function patternTemplate(item, index) {
-    const docs = item.docs?.length ? `<div class="pattern-docs"><span>Reference</span>${item.docs.map((url, docIndex) => `<a href="${esc(url)}" target="_blank" rel="noreferrer">Official docs${item.docs.length > 1 ? ` ${docIndex + 1}` : ""} ↗</a>`).join("")}</div>` : "";
-    const prep = /prep|engine|federation|calendar|bridge|identity|cohort|entity|contract|lineage/i.test(item.mode);
-    return `<details class="pattern-card" id="${esc(item.id)}"${expanded ? " open" : ""}>
+  function renderSupportFilters() {
+    if (!supportFilters) return;
+    const values = ["All", ...supportOrder];
+    supportFilters.innerHTML = values.map(value => {
+      const total = value === "All" ? patterns.length : patterns.filter(item => item.support === value).length;
+      const label = value === "All" ? "All support" : supportLabels[value];
+      return `<button type="button" class="filter-chip support-filter support-${esc(value)}${value === activeSupport ? " active" : ""}" data-pattern-support="${esc(value)}">${esc(label)} <span>${total}</span></button>`;
+    }).join("");
+  }
+
+  function docsTemplate(item) {
+    if (!item.docs?.length) return "";
+    return `<div class="pattern-docs"><span>References</span>${item.docs.map((doc, index) => {
+      const url = typeof doc === "string" ? doc : doc.url;
+      const label = typeof doc === "string" ? `Official docs${item.docs.length > 1 ? ` ${index + 1}` : ""}` : doc.label;
+      return `<a href="${esc(url)}" target="_blank" rel="noreferrer">${esc(label)} ↗</a>`;
+    }).join("")}</div>`;
+  }
+
+  function codeTemplate(item) {
+    if (item.support === "unsupported" || !item.code) {
+      return `<div class="pattern-unsupported"><b>Not supported in Apache Ossie core 0.3.0.dev0</b><p>${esc(item.supportNote || item.caveat)}</p></div>`;
+    }
+    const boundary = item.support === "boundary" && item.supportNote
+      ? `<div class="pattern-boundary"><b>Boundary</b><p>${esc(item.supportNote)}</p></div>`
+      : "";
+    return `${boundary}<div class="pattern-code-head"><span>Implementation template</span><button type="button" data-copy-pattern="${esc(item.id)}">Copy code</button></div><pre><code>${esc(item.code)}</code></pre>`;
+  }
+
+  function patternTemplate(item) {
+    const supportClass = item.support ? ` support-${item.support}` : "";
+    const prep = /prep|engine|federation|calendar|bridge|identity|cohort|entity|contract|lineage|boundary/i.test(item.mode);
+    const compare = counterpartUrl ? `<a class="pattern-compare" href="${esc(counterpartUrl)}#${esc(item.id)}">Compare the same situation in ${esc(counterpartLabel)} →</a>` : "";
+    return `<details class="pattern-card${supportClass}" id="${esc(item.id)}"${expanded ? " open" : ""}>
       <summary>
-        <span class="pattern-number">${String(index + 1).padStart(2, "0")}</span>
+        <span class="pattern-number">${esc(item.id.replace("case-", ""))}</span>
         <div><small>${esc(item.category)}</small><h3>${esc(item.title)}</h3><p>${esc(item.business)}</p></div>
-        <span class="pattern-mode${prep ? " prep" : ""}">${esc(item.mode)}</span>
+        <span class="pattern-mode${prep ? " prep" : ""}${supportClass}">${esc(item.mode)}</span>
         <span class="pattern-toggle" aria-hidden="true"></span>
       </summary>
       <div class="pattern-detail">
         <div class="pattern-rule"><small>Semantic rule</small><p>${esc(item.rule)}</p></div>
-        <div class="pattern-code-head"><span>Implementation template</span><button type="button" data-copy-pattern="${esc(item.id)}">Copy code</button></div>
-        <pre><code>${esc(item.code)}</code></pre>
-        <div class="pattern-caveat"><b>!</b><div><small>Implementation caveat</small><p>${esc(item.caveat)}</p></div></div>
-        ${docs}
+        ${codeTemplate(item)}
+        <div class="pattern-caveat"><b>!</b><div><small>${item.support === "unsupported" ? "Why" : "Implementation caveat"}</small><p>${esc(item.caveat)}</p></div></div>
+        ${docsTemplate(item)}
+        ${compare}
       </div>
     </details>`;
   }
 
   function apply() {
     const query = search.value.trim().toLowerCase();
-    const results = patterns.filter(item => (activeCategory === "All" || item.category === activeCategory) && (!query || searchable(item).includes(query)));
-    list.innerHTML = results.map((item, index) => patternTemplate(item, index)).join("");
+    const results = patterns.filter(item =>
+      (activeCategory === "All" || item.category === activeCategory) &&
+      (activeSupport === "All" || item.support === activeSupport) &&
+      (!query || searchable(item).includes(query))
+    );
+    list.innerHTML = results.map(patternTemplate).join("");
     count.textContent = `${results.length} ${results.length === 1 ? "pattern" : "patterns"}`;
     empty.hidden = results.length > 0;
-    clear.hidden = activeCategory === "All" && !query;
+    clear.hidden = !isFiltered();
     live.textContent = `${results.length} implementation patterns shown`;
 
     const hash = location.hash.slice(1);
-    if (hash) {
+    if (hash && !followedHash) {
       const target = document.getElementById(hash);
-      if (target) { target.open = true; requestAnimationFrame(() => target.scrollIntoView({ block: "start" })); }
+      if (target) {
+        followedHash = true;
+        target.open = true;
+        requestAnimationFrame(() => target.scrollIntoView({ block: "start" }));
+      }
     }
   }
 
@@ -66,12 +116,28 @@
     const button = event.target.closest("[data-pattern-category]");
     if (!button) return;
     activeCategory = button.dataset.patternCategory;
-    renderFilters();
+    renderCategoryFilters();
+    apply();
+  });
+
+  supportFilters?.addEventListener("click", event => {
+    const button = event.target.closest("[data-pattern-support]");
+    if (!button) return;
+    activeSupport = button.dataset.patternSupport;
+    renderSupportFilters();
     apply();
   });
 
   search.addEventListener("input", apply);
-  clear.addEventListener("click", () => { activeCategory = "All"; search.value = ""; renderFilters(); apply(); search.focus(); });
+  clear.addEventListener("click", () => {
+    activeCategory = "All";
+    activeSupport = "All";
+    search.value = "";
+    renderCategoryFilters();
+    renderSupportFilters();
+    apply();
+    search.focus();
+  });
   expandButton.addEventListener("click", () => {
     expanded = !expanded;
     $$(".pattern-card").forEach(card => { card.open = expanded; });
@@ -83,7 +149,7 @@
     if (!button) return;
     event.preventDefault();
     const item = patterns.find(pattern => pattern.id === button.dataset.copyPattern);
-    if (!item) return;
+    if (!item?.code) return;
     try {
       await navigator.clipboard.writeText(item.code);
       button.textContent = "Copied";
@@ -98,6 +164,7 @@
     if (event.key === "/" && !/input|textarea|select/i.test(document.activeElement.tagName)) { event.preventDefault(); search.focus(); }
   });
 
-  renderFilters();
+  renderCategoryFilters();
+  renderSupportFilters();
   apply();
 })();

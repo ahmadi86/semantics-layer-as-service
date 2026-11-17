@@ -2,6 +2,8 @@
 
 Semantic Layer Atlas is a static research website for discovering and comparing semantic-layer technologies.
 
+![Semantic Layer Atlas homepage](assets/semantic-layer-atlas-homepage.png)
+
 The current site includes:
 
 - A searchable directory of semantic-layer products and standards

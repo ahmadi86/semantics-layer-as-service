@@ -9,6 +9,7 @@ The current site includes:
 - Shortlisting and comparison tools
 - A LookML implementation guide with 68 searchable business situations, semantic rules, code patterns, and caveats
 - An Apache Ossie `0.3.0.dev0` field guide covering the same 68 situations as core examples, source/runtime boundaries, or explicit unsupported cases
+- A Snowflake Semantic Views (Cortex) field guide covering the same 68 situations with current YAML/DDL patterns and explicit platform or source boundaries
 
 ## Run locally with Python
 
@@ -33,6 +34,8 @@ Then open:
 - LookML use-case guide: [http://localhost:8000/technology/lookml/use-cases/](http://localhost:8000/technology/lookml/use-cases/)
 - Apache Ossie profile: [http://localhost:8000/technology/apache-ossie/](http://localhost:8000/technology/apache-ossie/)
 - Apache Ossie use-case guide: [http://localhost:8000/technology/apache-ossie/use-cases/](http://localhost:8000/technology/apache-ossie/use-cases/)
+- Snowflake Semantic Views profile: [http://localhost:8000/technology/snowflake-semantic-views/](http://localhost:8000/technology/snowflake-semantic-views/)
+- Snowflake Semantic Views use-case guide: [http://localhost:8000/technology/snowflake-semantic-views/use-cases/](http://localhost:8000/technology/snowflake-semantic-views/use-cases/)
 
 Stop the server with `Ctrl+C`.
 
@@ -51,6 +54,7 @@ python -m http.server 8080 --directory dist
 │   ├── technology/            # Technology profile routes
 │   ├── lookml-use-cases.js    # The 68 LookML implementation patterns
 │   ├── apache-ossie-use-cases.js # Matching Ossie patterns and support states
+│   ├── snowflake-semantic-views-use-cases.js # Matching Snowflake patterns and boundaries
 │   ├── use-cases.js           # Shared search, filter, deep-link, and copy behavior
 │   ├── data.js                # Technology directory data
 │   ├── app.js                 # Directory and profile behavior
@@ -63,4 +67,5 @@ python -m http.server 8080 --directory dist
 - The website uses absolute paths such as `/styles.css`, so serve `dist` as the web root instead of opening HTML files directly.
 - Apache Ossie examples target the mutable draft `0.3.0.dev0`; verify them against the current official schema and producer/consumer implementations.
 - Unsupported Ossie cases intentionally have no fake YAML or vendor-extension workaround.
-- LookML, Ossie, and SQL examples are implementation templates. Validate grain, dialect support, joins, access controls, and performance in the target platform.
+- Snowflake examples reflect the November 2026 Semantic View surface; some LOD, range, and many-to-many capabilities are still documented as preview and can differ between Semantic SQL and Cortex consumers.
+- LookML, Ossie, Snowflake, and SQL examples are implementation templates. Validate grain, dialect support, joins, access controls, and performance in the target platform.

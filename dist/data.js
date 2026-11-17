@@ -177,7 +177,7 @@ window.SEMANTIC_TECH = [
   },
   {
     slug: "snowflake-semantic-views",
-    name: "Snowflake Semantic Views",
+    name: "Snowflake Semantic Views (Cortex)",
     vendor: "Snowflake",
     category: "Warehouse-native",
     type: "Native semantic object for analytics and Cortex AI",
@@ -186,22 +186,23 @@ window.SEMANTIC_TECH = [
     license: "Commercial cloud feature",
     deployment: "Snowflake",
     summary: "Warehouse-native semantic models that define logical tables, facts, dimensions, relationships, and metrics for SQL and AI consumers while keeping governance in Snowflake.",
-    description: "Snowflake Semantic Views map physical warehouse objects to business concepts using logical tables, relationships, facts, dimensions, and metrics. Models can be represented in YAML and created as native database objects. They are a foundation for Cortex Analyst and Snowflake Intelligence, and current releases emphasize automated model generation plus Apache Ossie import/export.",
+    description: "Snowflake Semantic Views map physical warehouse objects to business concepts using logical tables, relationships, facts, dimensions, metrics, filters, and variables. Models can be represented in YAML or DDL and created as native database objects. They support Semantic SQL and Cortex experiences, with newer capabilities for window and semi-additive metrics, ASOF/range and many-to-many relationships, level-of-detail expressions, and maintained materializations.",
     bestFor: "Snowflake estates that want semantics governed with warehouse objects and reused by Cortex AI, SQL workflows, and participating partner tools.",
     marketNote: "Introduced in Snowflake’s recent AI/analytics product generation around 2024–2025; Semantic View Autopilot reached general availability in February 2026.",
     authoring: ["YAML specification", "SQL and Snowflake object lifecycle", "Semantic View Autopilot and partner tooling"],
     consumption: ["Cortex Analyst and Snowflake Intelligence", "SQL and supported BI integrations", "Apache Ossie import/export"],
     domains: ["General-purpose enterprise analytics", "Models can be segmented by business subject area", "Strong emphasis on AI-grounded business context"],
-    dimensions: ["Logical tables and relationships", "Regular and time dimensions", "Row-level facts", "Table-level and model-level metrics", "Private helper facts", "Descriptions, synonyms, and AI instructions"],
-    pros: ["First-class semantics close to governed data", "Rich separation of facts, dimensions, and metrics", "Direct foundation for Snowflake’s AI agents", "Strong commitment to Apache Ossie interoperability"],
+    dimensions: ["Logical tables, keys, and relationships", "Regular and time dimensions", "Row-level facts", "Table-level and derived metrics", "Variables, filters, windows, and semi-additive metrics", "Descriptions, synonyms, verified queries, and AI instructions", "Semantic View materializations"],
+    pros: ["First-class executable semantics close to governed data", "Rich separation of facts, dimensions, and metrics", "Direct foundation for Snowflake’s AI agents and Semantic SQL", "Native materialization and query-rewrite path", "Strong commitment to Apache Ossie interoperability"],
     cons: ["Best value assumes Snowflake is the strategic data platform", "Younger than established BI semantic engines", "Cross-tool fidelity depends on connectors and exported feature overlap", "Operational cost follows warehouse and cloud-service usage"],
     interoperability: "Native Ossie conversion, partner ecosystem support, and standard SQL access improve reach; execution remains Snowflake-centered.",
     verdict: "A natural semantic control point for Snowflake-first organizations, especially when Cortex AI is on the roadmap.",
+    implementationLibrary: { count: 68, label: "Snowflake use cases", url: "/technology/snowflake-semantic-views/use-cases/", description: "See the same 68 situations as native Semantic View examples, explicit Snowflake or source boundaries, and current limitations." },
     scores: { expressiveness: 4, interoperability: 4, governance: 5, ai: 5, openness: 3 },
     sources: [
       ["Semantic View YAML specification", "https://docs.snowflake.com/en/user-guide/views-semantic/semantic-view-yaml-spec"],
-      ["Semantic View Autopilot GA", "https://www.snowflake.com/en/blog/semantic-view-autopilot/"],
-      ["Apache Ossie ecosystem", "https://ossie.apache.org/ecosystem/"]
+      ["Querying semantic views", "https://docs.snowflake.com/en/user-guide/views-semantic/querying"],
+      ["Semantic View materializations", "https://docs.snowflake.com/en/user-guide/views-semantic/materializations"]
     ]
   },
   {

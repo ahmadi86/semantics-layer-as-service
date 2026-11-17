@@ -1,15 +1,40 @@
 (() => {
   const catalog = document.body.dataset.catalog || "lookml";
-  const libraries = { lookml: window.LOOKML_USE_CASES || [], ossie: window.OSSIE_USE_CASES || [] };
+  const libraries = {
+    lookml: window.LOOKML_USE_CASES || [],
+    ossie: window.OSSIE_USE_CASES || [],
+    snowflake: window.SNOWFLAKE_SEMANTIC_VIEW_USE_CASES || []
+  };
   const patterns = libraries[catalog] || [];
   const counterpartUrl = document.body.dataset.counterpartUrl || "";
   const counterpartLabel = document.body.dataset.counterpartLabel || "the companion guide";
+  const counterparts = (document.body.dataset.counterparts || "")
+    .split(";")
+    .map(value => {
+      const [label, url] = value.split("|");
+      return { label, url };
+    })
+    .filter(item => item.label && item.url);
+  if (!counterparts.length && counterpartUrl) counterparts.push({ label: counterpartLabel, url: counterpartUrl });
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
   const esc = (value = "") => String(value).replace(/[&<>'"]/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[char]);
   const categoryOrder = [...new Set(patterns.map(item => item.category))];
-  const supportOrder = ["core", "boundary", "unsupported"];
-  const supportLabels = { core: "Core Ossie", boundary: "Source / runtime boundary", unsupported: "Not supported" };
+  const catalogConfig = {
+    ossie: {
+      supportLabels: { core: "Core Ossie", boundary: "Source / runtime boundary", unsupported: "Not supported" },
+      unsupportedTitle: "Not supported in Apache Ossie core 0.3.0.dev0"
+    },
+    snowflake: {
+      supportLabels: { core: "Native Semantic View", boundary: "Snowflake / source boundary", unsupported: "Not supported" },
+      unsupportedTitle: "Not supported in Snowflake Semantic Views"
+    }
+  }[catalog] || {
+    supportLabels: { core: "Native", boundary: "Implementation boundary", unsupported: "Not supported" },
+    unsupportedTitle: "Not supported"
+  };
+  const supportOrder = ["core", "boundary", "unsupported"].filter(value => patterns.some(item => item.support === value));
+  const supportLabels = catalogConfig.supportLabels;
   let activeCategory = "All";
   let activeSupport = "All";
   let expanded = false;
@@ -59,7 +84,7 @@
 
   function codeTemplate(item) {
     if (item.support === "unsupported" || !item.code) {
-      return `<div class="pattern-unsupported"><b>Not supported in Apache Ossie core 0.3.0.dev0</b><p>${esc(item.supportNote || item.caveat)}</p></div>`;
+      return `<div class="pattern-unsupported"><b>${esc(catalogConfig.unsupportedTitle)}</b><p>${esc(item.supportNote || item.caveat)}</p></div>`;
     }
     const boundary = item.support === "boundary" && item.supportNote
       ? `<div class="pattern-boundary"><b>Boundary</b><p>${esc(item.supportNote)}</p></div>`
@@ -70,7 +95,7 @@
   function patternTemplate(item) {
     const supportClass = item.support ? ` support-${item.support}` : "";
     const prep = /prep|engine|federation|calendar|bridge|identity|cohort|entity|contract|lineage|boundary/i.test(item.mode);
-    const compare = counterpartUrl ? `<a class="pattern-compare" href="${esc(counterpartUrl)}#${esc(item.id)}">Compare the same situation in ${esc(counterpartLabel)} →</a>` : "";
+    const compare = counterparts.length ? `<div class="pattern-compares">${counterparts.map(counterpart => `<a class="pattern-compare" href="${esc(counterpart.url)}#${esc(item.id)}">Compare in ${esc(counterpart.label)} →</a>`).join("")}</div>` : "";
     return `<details class="pattern-card${supportClass}" id="${esc(item.id)}"${expanded ? " open" : ""}>
       <summary>
         <span class="pattern-number">${esc(item.id.replace("case-", ""))}</span>

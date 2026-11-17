@@ -217,7 +217,7 @@ img, svg { max-width: 100%; }
 .scoring { display:grid; grid-template-columns:70px .75fr 1.25fr; gap:45px; padding-block:110px; }.score-defs p { display:grid; grid-template-columns:130px 1fr; gap:16px; margin:0; padding:17px 0; border-top:1px solid var(--line); }.score-defs b { font-size:12px; }.score-defs span { color:var(--muted); font-size:11px; line-height:1.6; }.method-warning { grid-column:3; padding:18px; border-left:3px solid var(--signal); color:var(--muted); background:var(--paper-2); font-size:11px; }
 .source-note { display:grid; grid-template-columns:1fr 1.4fr auto; gap:40px; align-items:center; padding-block:75px; border-top:1px solid var(--line); }.source-note h2 { margin:0; font-size:28px; }.source-note > p { color:var(--muted); font-size:12px; line-height:1.7; }
 
-/* LookML implementation catalog */
+/* Implementation catalogs */
 .pattern-hero { position:relative; overflow:hidden; color:white; background:var(--navy); }
 .pattern-hero::before { content:""; position:absolute; inset:0; opacity:.13; background-image:linear-gradient(rgba(255,255,255,.14) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.14) 1px,transparent 1px); background-size:42px 42px; }
 .pattern-hero-grid { position:relative; min-height:610px; display:grid; grid-template-columns:1.35fr .65fr; gap:80px; align-items:center; padding-block:75px; }
@@ -247,7 +247,7 @@ img, svg { max-width: 100%; }
 .pattern-mode.support-core { color:#174f36; border-color:#8ebca3; background:#e6f2eb; }.pattern-mode.support-boundary { color:#704619; border-color:#d7b47f; background:#f5e7cf; }.pattern-mode.support-unsupported { color:#812e2a; border-color:#d3a09d; background:#f7e6e4; }
 .pattern-card.support-unsupported[open] { border-color:#d3a09d; }.pattern-card.support-boundary[open] { border-color:#d7b47f; }
 .pattern-boundary,.pattern-unsupported { margin-top:26px; padding:20px 22px; border-left:4px solid #bd7d32; background:#f7eddf; }.pattern-unsupported { border-left-color:#a64039; background:#f8e9e7; }.pattern-boundary b,.pattern-unsupported b { display:block; margin-bottom:6px; color:#704619; font:9px var(--mono); text-transform:uppercase; letter-spacing:.08em; }.pattern-unsupported b { color:#812e2a; }.pattern-boundary p,.pattern-unsupported p { margin:0; color:#5d4c3b; font-size:12px; line-height:1.7; }.pattern-unsupported p { color:#633d3a; }
-.pattern-compare { display:inline-flex; margin-top:20px; color:var(--blue); font-size:10px; font-weight:800; text-decoration:none; }.pattern-compare:hover { text-decoration:underline; }
+.pattern-compares { display:flex; flex-wrap:wrap; gap:12px 24px; margin-top:20px; }.pattern-compare { display:inline-flex; color:var(--blue); font-size:10px; font-weight:800; text-decoration:none; }.pattern-compare:hover { text-decoration:underline; }
 .pattern-note { color:white; background:var(--navy); }.pattern-note .wrap { min-height:380px; display:grid; grid-template-columns:1fr 1fr; gap:100px; align-items:center; padding-block:80px; }.pattern-note h2 { max-width:580px; margin:0; font-size:clamp(36px,4vw,58px); line-height:1.03; letter-spacing:-.055em; }.pattern-note .wrap > p { margin:0; color:#aab5c7; font-size:15px; line-height:1.8; }
 
 @media (max-width: 1000px) {

@@ -56,10 +56,25 @@ If port `8000` is already in use, choose another port, for example:
 python -m http.server 8080 --directory dist
 ```
 
+## Deploy to GitHub Pages
+
+The repository includes a GitHub Actions workflow that publishes `dist` to GitHub Pages whenever `main` is updated. The deployment step automatically adjusts root-relative links for the repository's Pages base path, so the same `dist` files continue to work when served locally.
+
+To enable the first deployment:
+
+1. Open the repository on GitHub and go to **Settings → Pages**.
+2. Under **Build and deployment**, set **Source** to **GitHub Actions**.
+3. Push this repository to `main`, or run **Deploy website to GitHub Pages** manually from the **Actions** tab.
+
+For this repository, the published site will be available at:
+
+- [https://ahmadi86.github.io/semantics-layer-atlas/](https://ahmadi86.github.io/semantics-layer-atlas/)
+
 ## Project structure
 
 ```text
 .
+├── .github/workflows/pages.yml # GitHub Pages deployment
 ├── dist/                      # Complete static website
 │   ├── index.html             # Technology directory
 │   ├── technology/            # Technology profile routes
@@ -73,6 +88,7 @@ python -m http.server 8080 --directory dist
 │   ├── data.js                # Technology directory data
 │   ├── app.js                 # Directory and profile behavior
 │   └── styles.css             # Shared visual system
+├── scripts/prepare_pages.py   # Pages base-path preparation
 └── README.md
 ```
 

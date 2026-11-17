@@ -3,7 +3,8 @@
   const libraries = {
     lookml: window.LOOKML_USE_CASES || [],
     ossie: window.OSSIE_USE_CASES || [],
-    snowflake: window.SNOWFLAKE_SEMANTIC_VIEW_USE_CASES || []
+    snowflake: window.SNOWFLAKE_SEMANTIC_VIEW_USE_CASES || [],
+    databricks: window.DATABRICKS_GENIE_USE_CASES || []
   };
   const patterns = libraries[catalog] || [];
   const counterpartUrl = document.body.dataset.counterpartUrl || "";
@@ -28,6 +29,10 @@
     snowflake: {
       supportLabels: { core: "Native Semantic View", boundary: "Snowflake / source boundary", unsupported: "Not supported" },
       unsupportedTitle: "Not supported in Snowflake Semantic Views"
+    },
+    databricks: {
+      supportLabels: { core: "Metric view + Genie", boundary: "Unity Catalog / source boundary", unsupported: "Not supported" },
+      unsupportedTitle: "Not supported by Genie or metric views"
     }
   }[catalog] || {
     supportLabels: { core: "Native", boundary: "Implementation boundary", unsupported: "Not supported" },

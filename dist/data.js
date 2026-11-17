@@ -81,6 +81,7 @@ window.SEMANTIC_TECH = [
     cons: ["Not a standalone or vendor-neutral semantic model", "Quality depends heavily on curation, source modeling, and domain boundaries", "Broad, ambiguous questions can still require clarification", "Best fit assumes Databricks data and governance"],
     interoperability: "Primarily a Databricks consumption layer. It can sit above metric views and governed tables, while external applications can integrate through Databricks APIs.",
     verdict: "Use as the conversational front door to a Databricks semantic foundation—not as a substitute for modeling that foundation.",
+    implementationLibrary: { count: 68, label: "Databricks Genie use cases", url: "/technology/databricks-genie/use-cases/", description: "See the same 68 situations as metric-view and trusted-Agent patterns, explicit Unity Catalog or source boundaries, and unsupported cases." },
     scores: { expressiveness: 2, interoperability: 2, governance: 4, ai: 5, openness: 1 },
     sources: [
       ["Genie Agents overview", "https://docs.databricks.com/aws/en/genie-agents/"],

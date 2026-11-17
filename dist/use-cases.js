@@ -3,6 +3,7 @@
   const libraries = {
     lookml: window.LOOKML_USE_CASES || [],
     ossie: window.OSSIE_USE_CASES || [],
+    dbt: window.DBT_SEMANTIC_LAYER_USE_CASES || [],
     snowflake: window.SNOWFLAKE_SEMANTIC_VIEW_USE_CASES || [],
     databricks: window.DATABRICKS_GENIE_USE_CASES || [],
     cube: window.CUBE_USE_CASES || []
@@ -26,6 +27,10 @@
     ossie: {
       supportLabels: { core: "Core Ossie", boundary: "Source / runtime boundary", unsupported: "Not supported" },
       unsupportedTitle: "Not supported in Apache Ossie core 0.3.0.dev0"
+    },
+    dbt: {
+      supportLabels: { core: "Native MetricFlow", boundary: "dbt / platform boundary", unsupported: "Not supported" },
+      unsupportedTitle: "Not supported in dbt Semantic Layer + MetricFlow"
     },
     snowflake: {
       supportLabels: { core: "Native Semantic View", boundary: "Snowflake / source boundary", unsupported: "Not supported" },

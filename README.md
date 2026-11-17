@@ -11,6 +11,7 @@ The current site includes:
 - Shortlisting and comparison tools
 - A LookML implementation guide with 68 searchable business situations, semantic rules, code patterns, and caveats
 - An Apache Ossie `0.3.0.dev0` field guide covering the same 68 situations as core examples, source/runtime boundaries, or explicit unsupported cases
+- A dbt Semantic Layer + MetricFlow field guide covering the same 68 situations with latest-spec YAML, explicit dbt/platform boundaries, and unsupported cases
 - A Snowflake Semantic Views (Cortex) field guide covering the same 68 situations with current YAML/DDL patterns and explicit platform or source boundaries
 - A Databricks Genie Agents field guide covering the same 68 situations with Unity Catalog metric-view YAML, trusted-Agent patterns, governance/source boundaries, and explicit unsupported cases
 - A Cube field guide covering the same 68 situations with current YAML, Tesseract-aware calculations, access policies, pre-aggregations, and explicit source or consumer boundaries
@@ -38,6 +39,8 @@ Then open:
 - LookML use-case guide: [http://localhost:8000/technology/lookml/use-cases/](http://localhost:8000/technology/lookml/use-cases/)
 - Apache Ossie profile: [http://localhost:8000/technology/apache-ossie/](http://localhost:8000/technology/apache-ossie/)
 - Apache Ossie use-case guide: [http://localhost:8000/technology/apache-ossie/use-cases/](http://localhost:8000/technology/apache-ossie/use-cases/)
+- dbt Semantic Layer + MetricFlow profile: [http://localhost:8000/technology/dbt-semantic-layer/](http://localhost:8000/technology/dbt-semantic-layer/)
+- dbt Semantic Layer + MetricFlow use-case guide: [http://localhost:8000/technology/dbt-semantic-layer/use-cases/](http://localhost:8000/technology/dbt-semantic-layer/use-cases/)
 - Snowflake Semantic Views profile: [http://localhost:8000/technology/snowflake-semantic-views/](http://localhost:8000/technology/snowflake-semantic-views/)
 - Snowflake Semantic Views use-case guide: [http://localhost:8000/technology/snowflake-semantic-views/use-cases/](http://localhost:8000/technology/snowflake-semantic-views/use-cases/)
 - Databricks Genie Agents profile: [http://localhost:8000/technology/databricks-genie/](http://localhost:8000/technology/databricks-genie/)
@@ -62,6 +65,7 @@ python -m http.server 8080 --directory dist
 │   ├── technology/            # Technology profile routes
 │   ├── lookml-use-cases.js    # The 68 LookML implementation patterns
 │   ├── apache-ossie-use-cases.js # Matching Ossie patterns and support states
+│   ├── dbt-semantic-layer-use-cases.js # Matching MetricFlow patterns and boundaries
 │   ├── snowflake-semantic-views-use-cases.js # Matching Snowflake patterns and boundaries
 │   ├── databricks-genie-use-cases.js # Matching Genie/metric-view patterns and boundaries
 │   ├── cube-use-cases.js     # Matching Cube YAML patterns and boundaries
@@ -77,7 +81,8 @@ python -m http.server 8080 --directory dist
 - The website uses absolute paths such as `/styles.css`, so serve `dist` as the web root instead of opening HTML files directly.
 - Apache Ossie examples target the mutable draft `0.3.0.dev0`; verify them against the current official schema and producer/consumer implementations.
 - Unsupported Ossie cases intentionally have no fake YAML or vendor-extension workaround.
+- dbt examples use the latest model-embedded Semantic Layer specification documented for dbt v1.12/v2. Managed APIs, exports, declarative caching, and credential features remain plan-dependent.
 - Snowflake examples reflect the November 2026 Semantic View surface; some LOD, range, and many-to-many capabilities are still documented as preview and can differ between Semantic SQL and Cortex consumers.
 - Databricks examples reflect the November 2026 Genie Agent and metric-view surface. Runtime-dependent features state their minimum version, and Agent instructions are never treated as access control.
 - Cube examples reflect the November 2026 modeling surface, including Tesseract-era multi-stage measures, switch parameters, calendar cubes, access policies, and pre-aggregation behavior.
-- LookML, Ossie, Snowflake, Databricks, Cube, and SQL examples are implementation templates. Validate grain, dialect support, joins, access controls, and performance in the target platform.
+- LookML, Ossie, dbt/MetricFlow, Snowflake, Databricks, Cube, and SQL examples are implementation templates. Validate grain, dialect support, joins, access controls, and performance in the target platform.

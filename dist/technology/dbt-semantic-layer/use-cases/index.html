@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="The same 68 semantic-layer situations implemented for dbt Semantic Layer and MetricFlow with current YAML, explicit dbt or platform boundaries, and unsupported cases.">
+  <title>68 dbt Semantic Layer + MetricFlow Use Cases — Semantic Layer Atlas</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body data-page="dbt-use-cases" data-catalog="dbt" data-counterparts="LookML|/technology/lookml/use-cases/;Apache Ossie|/technology/apache-ossie/use-cases/;Snowflake Semantic Views|/technology/snowflake-semantic-views/use-cases/;Databricks Genie|/technology/databricks-genie/use-cases/;Cube|/technology/cube/use-cases/">
+  <a class="skip-link" href="#patternMain">Skip to patterns</a>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="Semantic Layer Atlas home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>Semantic Layer <b>Atlas</b></span></a>
+    <nav aria-label="Primary navigation"><a href="/">Directory</a><a href="/technology/lookml/use-cases/">LookML</a><a href="/technology/apache-ossie/use-cases/">Apache Ossie</a><a class="active" href="/technology/dbt-semantic-layer/">dbt</a><a href="/technology/snowflake-semantic-views/use-cases/">Snowflake</a><a href="/technology/databricks-genie/use-cases/">Databricks</a><a href="/technology/cube/use-cases/">Cube</a><a href="/about.html">Method</a></nav>
+    <a class="header-back" href="/technology/dbt-semantic-layer/">← dbt Semantic Layer profile</a>
+  </header>
+
+  <main id="patternMain">
+    <section class="pattern-hero">
+      <div class="wrap pattern-hero-grid">
+        <div>
+          <div class="breadcrumb"><a href="/">Directory</a><span>→</span><a href="/technology/dbt-semantic-layer/">dbt Semantic Layer + MetricFlow</a><span>→</span>Use cases</div>
+          <p class="kicker"><span></span>Metrics-as-code field guide · latest specification</p>
+          <h1>68 semantic situations.<br><em>MetricFlow patterns.</em></h1>
+          <p class="pattern-deck">Current dbt YAML where MetricFlow owns the behavior, explicit dbt model or data-platform patterns for 27 boundaries, and seven unsupported cases described without invented syntax.</p>
+        </div>
+        <div class="pattern-tally" aria-label="Catalog summary">
+          <strong>68</strong><span>situations</span>
+          <div><b>34</b><small>native MetricFlow</small></div><div><b>7</b><small>unsupported</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pattern-thesis"><div class="wrap"><span>Execution boundary</span><p><b>MetricFlow is a semantic query engine over dbt models.</b> It owns metric logic, safe entity joins, time behavior, exports, and managed caching; ingestion, recursive preparation, warehouse authorization, and consumer presentation keep separate owners.</p></div></section>
+
+    <section class="wrap pattern-catalog">
+      <div class="pattern-intro">
+        <div><p class="eyebrow">Search the same 68 situations</p><h2>Native metric, explicit boundary, or unsupported.</h2></div>
+        <p>Examples use the latest dbt v1.12/v2 semantic specification: model-embedded semantic annotations, simple metrics, top-level advanced metrics, custom calendars, SCD Type II joins, saved queries, exports, and declarative caching.</p>
+      </div>
+      <div class="pattern-tools">
+        <label class="pattern-search"><span class="sr-only">Search patterns</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m16.2 16.2 4 4"></path></svg><input id="patternSearch" type="search" placeholder="Search situations, support, YAML, metrics, caveats…" autocomplete="off"><kbd>/</kbd></label>
+        <button id="expandAll" type="button">Expand all</button>
+      </div>
+      <div class="filter-row pattern-filters" id="patternFilters" aria-label="Filter by category"></div>
+      <div class="filter-row pattern-filters support-filters" id="supportFilters" aria-label="Filter by support status"></div>
+      <div class="pattern-results"><span id="patternCount">68 patterns</span><button id="clearPatternFilters" type="button" hidden>Clear filters</button></div>
+      <div id="patternList" class="pattern-list"></div>
+      <div id="patternEmpty" class="empty-state" hidden><span>∅</span><h3>No matching dbt Semantic Layer pattern.</h3><p>Try a business concept, MetricFlow construct, or support boundary.</p></div>
+    </section>
+
+    <section class="pattern-note"><div class="wrap"><div><p class="eyebrow light">Modeling boundary</p><h2>Metrics-as-code still depends on trustworthy grain.</h2></div><p>MetricFlow prevents unsafe join paths and recalculates governed metrics, but it cannot recover discarded entity identities, turn a repeated scalar into a key-aware sum, or make incompatible sources queryable together. The catalog calls those limits out directly.</p></div></section>
+  </main>
+
+  <footer class="site-footer"><div class="wrap footer-inner"><div><span class="brand-mark small" aria-hidden="true"><i></i><i></i><i></i></span><b>Semantic Layer Atlas</b></div><p>Illustrative latest-spec dbt and MetricFlow templates. Validate adapter support, plan availability, grain, SQL, permissions, and generated results in your deployment.</p><span>Reviewed November 2026</span></div></footer>
+  <div id="patternLive" class="sr-only" aria-live="polite"></div>
+  <script src="/lookml-use-cases.js"></script>
+  <script src="/dbt-semantic-layer-use-cases.js"></script>
+  <script src="/use-cases.js"></script>
+</body>
+</html>

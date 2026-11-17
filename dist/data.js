@@ -169,6 +169,7 @@ window.SEMANTIC_TECH = [
     cons: ["Operating the open-source stack adds infrastructure responsibility", "A full end-user BI experience may require Cube Cloud or another frontend", "Model and pre-aggregation design can become sophisticated", "Some enterprise integrations and operations are commercial"],
     interoperability: "Broad consumer protocols and many warehouse connectors. Apache Ossie positioning is evolving; model portability is strongest within Cube-compatible definitions and APIs.",
     verdict: "Choose when the semantic layer is an application platform component, not merely a BI configuration feature.",
+    implementationLibrary: { count: 68, label: "Cube use cases", url: "/technology/cube/use-cases/", description: "See the same 68 situations as native Cube YAML, explicit source or consumer boundaries, and current Tesseract-aware patterns." },
     scores: { expressiveness: 5, interoperability: 5, governance: 4, ai: 4, openness: 4 },
     sources: [
       ["Cube data modeling", "https://cube.dev/product/data-modeling"],

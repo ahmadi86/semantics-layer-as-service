@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="The same 68 semantic-layer situations implemented for Cube with native YAML patterns, explicit source or consumer boundaries, and current capability notes.">
+  <title>68 Cube Use Cases — Semantic Layer Atlas</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body data-page="cube-use-cases" data-catalog="cube" data-counterparts="LookML|/technology/lookml/use-cases/;Apache Ossie|/technology/apache-ossie/use-cases/;Snowflake Semantic Views|/technology/snowflake-semantic-views/use-cases/;Databricks Genie|/technology/databricks-genie/use-cases/">
+  <a class="skip-link" href="#patternMain">Skip to patterns</a>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="Semantic Layer Atlas home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>Semantic Layer <b>Atlas</b></span></a>
+    <nav aria-label="Primary navigation"><a href="/">Directory</a><a href="/technology/lookml/use-cases/">LookML</a><a href="/technology/apache-ossie/use-cases/">Apache Ossie</a><a href="/technology/snowflake-semantic-views/use-cases/">Snowflake</a><a href="/technology/databricks-genie/use-cases/">Databricks</a><a class="active" href="/technology/cube/">Cube</a><a href="/about.html">Method</a></nav>
+    <a class="header-back" href="/technology/cube/">← Cube profile</a>
+  </header>
+
+  <main id="patternMain">
+    <section class="pattern-hero">
+      <div class="wrap pattern-hero-grid">
+        <div>
+          <div class="breadcrumb"><a href="/">Directory</a><span>→</span><a href="/technology/cube/">Cube</a><span>→</span>Use cases</div>
+          <p class="kicker"><span></span>Headless semantic-layer field guide · Tesseract aware</p>
+          <h1>68 semantic situations.<br><em>Executable Cube patterns.</em></h1>
+          <p class="pattern-deck">Cube YAML where the semantic engine owns the behavior, explicit source or consumer patterns where it does not, and honest capability boundaries without invented syntax.</p>
+        </div>
+        <div class="pattern-tally" aria-label="Catalog summary">
+          <strong>68</strong><span>situations</span>
+          <div><b>52</b><small>native Cube</small></div><div><b>16</b><small>explicit boundaries</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pattern-thesis"><div class="wrap"><span>Execution boundary</span><p><b>Cube is both a semantic runtime and an acceleration layer.</b> It owns measures, joins, multi-stage calculations, access policies, APIs, caching, and pre-aggregations; ingestion, source data quality, and consumer presentation still have separate owners.</p></div></section>
+
+    <section class="wrap pattern-catalog">
+      <div class="pattern-intro">
+        <div><p class="eyebrow">Search the same 68 situations</p><h2>Native model, explicit boundary, or unsupported.</h2></div>
+        <p>Examples use current Cube YAML, including Tesseract features such as multi-stage measures, switch parameters, join aliases, and calendar cubes. Boundary examples state the source, consumer, or CI work that Cube does not perform.</p>
+      </div>
+      <div class="pattern-tools">
+        <label class="pattern-search"><span class="sr-only">Search patterns</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m16.2 16.2 4 4"></path></svg><input id="patternSearch" type="search" placeholder="Search situations, support, YAML, caveats…" autocomplete="off"><kbd>/</kbd></label>
+        <button id="expandAll" type="button">Expand all</button>
+      </div>
+      <div class="filter-row pattern-filters" id="patternFilters" aria-label="Filter by category"></div>
+      <div class="filter-row pattern-filters support-filters" id="supportFilters" aria-label="Filter by support status"></div>
+      <div class="pattern-results"><span id="patternCount">68 patterns</span><button id="clearPatternFilters" type="button" hidden>Clear filters</button></div>
+      <div id="patternList" class="pattern-list"></div>
+      <div id="patternEmpty" class="empty-state" hidden><span>∅</span><h3>No matching Cube pattern.</h3><p>Try a business concept, support boundary, or category.</p></div>
+    </section>
+
+    <section class="pattern-note"><div class="wrap"><div><p class="eyebrow light">Modeling boundary</p><h2>A YAML definition cannot recover information the source discarded.</h2></div><p>Cube can calculate exact distincts, safe ratios, rolling windows, and accelerated aggregates when the model retains the necessary grain and keys. Stored scalar counts, ambiguous repeated values, and unversioned identities still require better source contracts.</p></div></section>
+  </main>
+
+  <footer class="site-footer"><div class="wrap footer-inner"><div><span class="brand-mark small" aria-hidden="true"><i></i><i></i><i></i></span><b>Semantic Layer Atlas</b></div><p>Illustrative Cube YAML. Validate data-source SQL, Tesseract version, joins, access policies, protocols, and pre-aggregation matches in your deployment.</p><span>Reviewed November 2026</span></div></footer>
+  <div id="patternLive" class="sr-only" aria-live="polite"></div>
+  <script src="/lookml-use-cases.js"></script>
+  <script src="/cube-use-cases.js"></script>
+  <script src="/use-cases.js"></script>
+</body>
+</html>

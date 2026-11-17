@@ -22,6 +22,67 @@
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
   const esc = (value = "") => String(value).replace(/[&<>'"]/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[char]);
+  const guideCatalog = [
+    { id: "lookml", label: "LookML", url: "/technology/lookml/use-cases/" },
+    { id: "ossie", label: "Apache Ossie", url: "/technology/apache-ossie/use-cases/" },
+    { id: "dbt", label: "dbt + MetricFlow", url: "/technology/dbt-semantic-layer/use-cases/" },
+    { id: "snowflake", label: "Snowflake", url: "/technology/snowflake-semantic-views/use-cases/" },
+    { id: "databricks", label: "Databricks", url: "/technology/databricks-genie/use-cases/" },
+    { id: "cube", label: "Cube", url: "/technology/cube/use-cases/" }
+  ];
+
+  function initGuideSwitcher() {
+    const switcher = $("#guideSwitcher");
+    if (!switcher) return;
+
+    const button = $("#guideSwitcherButton", switcher);
+    const panel = $("#guideSwitcherPanel", switcher);
+    const currentLabel = $("#guideSwitcherCurrent", switcher);
+    const list = $("#guideSwitcherList", switcher);
+    const currentGuide = guideCatalog.find(item => item.id === catalog) || guideCatalog[0];
+    if (!button || !panel || !currentLabel || !list) return;
+
+    currentLabel.textContent = currentGuide.label;
+    button.setAttribute("aria-label", `Choose use-case guide. Current guide: ${currentGuide.label}`);
+    list.innerHTML = guideCatalog.map((item, index) => {
+      const current = item.id === currentGuide.id;
+      return `<a class="guide-switcher-link" href="${esc(item.url)}"${current ? ' aria-current="page"' : ""}>
+        <span class="guide-switcher-index">${String(index + 1).padStart(2, "0")}</span>
+        <strong>${esc(item.label)}</strong>
+        <small>${current ? "Current guide" : "68 situations"}</small>
+      </a>`;
+    }).join("");
+
+    const setOpen = (open, returnFocus = false) => {
+      button.setAttribute("aria-expanded", String(open));
+      panel.hidden = !open;
+      if (!open && returnFocus) button.focus();
+    };
+
+    button.addEventListener("click", () => {
+      setOpen(button.getAttribute("aria-expanded") !== "true");
+    });
+    button.addEventListener("keydown", event => {
+      if (event.key !== "ArrowDown") return;
+      event.preventDefault();
+      setOpen(true);
+      $("a", list)?.focus();
+    });
+    list.addEventListener("click", event => {
+      if (event.target.closest("a")) setOpen(false);
+    });
+    document.addEventListener("click", event => {
+      if (!switcher.contains(event.target)) setOpen(false);
+    });
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape" && button.getAttribute("aria-expanded") === "true") {
+        event.preventDefault();
+        setOpen(false, true);
+      }
+    });
+  }
+
+  initGuideSwitcher();
   const categoryOrder = [...new Set(patterns.map(item => item.category))];
   const catalogConfig = {
     ossie: {

@@ -11,8 +11,15 @@
   <a class="skip-link" href="#patternMain">Skip to patterns</a>
   <header class="site-header">
     <a class="brand" href="/" aria-label="Semantic Layer Atlas home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>Semantic Layer <b>Atlas</b></span></a>
-    <nav aria-label="Primary navigation"><a href="/">Directory</a><a href="/technology/lookml/use-cases/">LookML</a><a href="/technology/apache-ossie/use-cases/">Apache Ossie</a><a href="/technology/dbt-semantic-layer/use-cases/">dbt</a><a href="/technology/snowflake-semantic-views/use-cases/">Snowflake</a><a href="/technology/databricks-genie/use-cases/">Databricks</a><a class="active" href="/technology/cube/">Cube</a><a href="/about.html">Method</a></nav>
-    <a class="header-back" href="/technology/cube/">← Cube profile</a>
+    <nav class="use-case-nav" aria-label="Primary navigation">
+      <a class="nav-primary-link" href="/">Directory</a>
+      <div class="guide-switcher" id="guideSwitcher">
+        <button class="guide-switcher-trigger" id="guideSwitcherButton" type="button" aria-expanded="false" aria-controls="guideSwitcherPanel"><span class="guide-switcher-label">Guides</span><span class="guide-switcher-separator" aria-hidden="true">·</span><span class="guide-switcher-current" id="guideSwitcherCurrent">Current guide</span><svg class="guide-switcher-chevron" viewBox="0 0 16 16" aria-hidden="true"><path d="m4 6 4 4 4-4"></path></svg></button>
+        <div class="guide-switcher-panel" id="guideSwitcherPanel" hidden><div class="guide-switcher-heading"><span>Use-case guides</span><small>6 catalogs</small></div><div class="guide-switcher-list" id="guideSwitcherList"></div><div class="guide-switcher-footer"><a href="/">All technologies →</a><a href="/about.html">Method →</a></div></div>
+      </div>
+      <a class="nav-primary-link" href="/about.html">Method</a>
+    </nav>
+    <a class="header-back" href="/technology/cube/"><span class="header-back-arrow" aria-hidden="true">← </span><span class="header-back-name">Cube </span>profile</a>
   </header>
 
   <main id="patternMain">
